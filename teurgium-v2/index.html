@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teurgium — Płyty tarasowe i nawierzchniowe premium</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,sans-serif;color:#111827;background:#fff;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{cursor:pointer;font-family:inherit}
+input,select,textarea{font-family:inherit;font-size:13px;padding:9px 12px;border:1px solid #D1D5DB;border-radius:8px;width:100%;background:#fff;color:#111827;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#1D9E75;box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+textarea{resize:vertical}
+
+/* CONTAINER */
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+@media(max-width:900px){.wrap{padding:0 20px}}
+@media(max-width:600px){.wrap{padding:0 14px}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #F3F4F6}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 40px;height:62px;display:flex;align-items:center;gap:6px}
+@media(max-width:900px){.nav-inner{padding:0 20px}}
+.logo{font-weight:900;font-size:17px;letter-spacing:.1em;color:#064E3B;margin-right:auto}
+.nav-link{background:none;border:none;font-size:13px;font-weight:500;color:#6B7280;padding:6px 12px;border-radius:6px;transition:all .15s}
+.nav-link:hover{color:#1D9E75;background:#F0FDF4}
+.nav-link.active{color:#1D9E75}
+.nav-cta{background:#064E3B;color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:7px;margin-left:10px;transition:background .15s}
+.nav-cta:hover{background:#065F46}
+.rfq-badge{background:#10B981;border-radius:50%;width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+
+/* HERO */
+.hero{position:relative;height:90vh;min-height:560px;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(2,44,34,.55) 0%,rgba(6,79,61,.4) 50%,rgba(0,0,0,.2) 100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 72px}
+.hero-inner{max-width:1180px;margin:0 auto;padding:0 40px;width:100%}
+@media(max-width:900px){.hero-inner{padding:0 20px}}
+.hero-badge{display:inline-flex;align-items:center;background:rgba(255,255,255,.12);color:#A7F3D0;border:1px solid rgba(167,243,208,.25);font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;letter-spacing:.07em;margin-bottom:18px;backdrop-filter:blur(6px)}
+.hero h1{color:#fff;font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.15;max-width:700px;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.2)}
+.hero p{color:rgba(255,255,255,.8);font-size:clamp(14px,1.5vw,17px);max-width:520px;line-height:1.7;margin-bottom:30px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-white{background:#fff;color:#064E3B;border:none;border-radius:9px;padding:13px 26px;font-size:14px;font-weight:700;transition:all .15s}
+.btn-white:hover{background:#F0FDF4}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;padding:13px 26px;font-size:14px;font-weight:600;backdrop-filter:blur(4px);transition:all .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+.hero-scroll{position:absolute;bottom:24px;right:40px;color:rgba(255,255,255,.5);font-size:20px}
+
+/* SECTIONS */
+.section{padding:88px 0}
+.section.gray{background:#F9FAFB}
+.section-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1D9E75;margin-bottom:10px}
+.section-h{font-size:clamp(22px,2.8vw,34px);font-weight:800;color:#111827;line-height:1.2;margin-bottom:10px}
+.section-sub{font-size:15px;color:#6B7280;line-height:1.7;max-width:560px;margin-bottom:48px}
+
+/* CATEGORIES — max 3 kolumny, duże kafle */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.cat-grid{grid-template-columns:1fr}}
+.cat-card{background:#fff;border:1.5px solid #E5E7EB;border-radius:16px;overflow:hidden;text-align:left;transition:all .2s;display:flex;flex-direction:column}
+.cat-card:hover{border-color:#1D9E75;transform:translateY(-3px);box-shadow:0 8px 28px rgba(29,158,117,.12)}
+.cat-img{height:200px;overflow:hidden;background:#F3F4F6}
+.cat-img img{transition:transform .4s}
+.cat-card:hover .cat-img img{transform:scale(1.04)}
+.cat-no-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#F0FDF4,#ECFDF5)}
+.cat-body{padding:22px 24px;flex:1;display:flex;flex-direction:column;gap:6px}
+.cat-name{font-size:18px;font-weight:700;color:#111827}
+.cat-sub{font-size:13px;color:#6B7280;line-height:1.5}
+.cat-arrow{font-size:13px;color:#1D9E75;font-weight:600;margin-top:auto;padding-top:10px}
+
+/* WHY US — max 3 kolumny */
+.usp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:860px){.usp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.usp-grid{grid-template-columns:1fr}}
+.usp-card{background:#fff;border:1.5px solid #E5E7EB;border-radius:16px;padding:32px 28px;transition:all .2s}
+.usp-card:hover{border-color:#1D9E75;box-shadow:0 6px 24px rgba(29,158,117,.08)}
+.usp-icon-wrap{width:52px;height:52px;background:#ECFDF5;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px}
+.usp-title{font-size:17px;font-weight:700;color:#111827;margin-bottom:10px}
+.usp-desc{font-size:14px;color:#6B7280;line-height:1.65}
+
+/* GALLERY — nieregularny 12-col grid */
+.gal-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.gtab{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:20px;padding:7px 18px;font-size:12px;font-weight:600;color:#374151;transition:all .2s}
+.gtab.active{background:#064E3B;color:#fff;border-color:#064E3B}
+.gal-irregular{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.gi1{grid-column:span 7;grid-row:span 2}
+.gi2{grid-column:span 5}
+.gi3{grid-column:span 5}
+.gi4{grid-column:span 4}
+.gi5{grid-column:span 4}
+.gi6{grid-column:span 4}
+@media(max-width:860px){.gal-irregular{grid-template-columns:repeat(2,1fr)}.gi1,.gi2,.gi3,.gi4,.gi5,.gi6{grid-column:span 1;grid-row:span 1}}
+@media(max-width:500px){.gal-irregular{grid-template-columns:1fr}}
+.gal-card{border-radius:14px;overflow:hidden;background:#111;position:relative;cursor:pointer}
+.gal-card .gal-img{height:100%;min-height:220px;overflow:hidden}
+.gal-card.gi1 .gal-img{min-height:460px}
+.gal-img img{transition:transform .5s;height:100%}
+.gal-card:hover .gal-img img{transform:scale(1.05)}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 100%)}
+.gal-info{position:absolute;bottom:0;left:0;right:0;padding:20px 22px;color:#fff}
+.gal-cat{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6EE7B7;margin-bottom:5px}
+.gal-title{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:3px}
+.gal-meta{font-size:12px;color:rgba(255,255,255,.65)}
+.gal-cta-btn{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;opacity:0;transition:opacity .2s;backdrop-filter:blur(4px)}
+.gal-card:hover .gal-cta-btn{opacity:1}
+
+/* PROMOS */
+.promo-wrap{border-radius:20px;overflow:hidden}
+.promo-slide{display:none;padding:40px 48px;border-radius:20px}
+.promo-slide.active{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+@media(max-width:600px){.promo-slide{padding:28px 24px}}
+.promo-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:10px}
+.promo-title{font-size:clamp(18px,2.5vw,26px);font-weight:800;color:#111827;margin-bottom:6px}
+.promo-sub{font-size:14px;color:#6B7280}
+.promo-dots{display:flex;gap:7px;margin-top:16px}
+.promo-dot{width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:#D1D5DB;transition:all .3s}
+.promo-dot.active{background:#1D9E75;width:24px;border-radius:4px}
+
+/* HOW TO ORDER — [własna zmiana #2] outlined numbers */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px}
+@media(max-width:700px){.steps{grid-template-columns:repeat(2,1fr)}}
+.step{background:#fff;border:1.5px solid #E5E7EB;border-radius:16px;padding:28px 20px;text-align:center;position:relative}
+.step::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:18px;color:#D1D5DB;font-weight:700}
+.step:last-child::after{display:none}
+.step-num{font-size:36px;font-weight:900;color:#ECFDF5;line-height:1;-webkit-text-stroke:2px #1D9E75}
+.step-label{font-size:14px;font-weight:700;color:#111827;margin-top:12px;margin-bottom:5px}
+.step-sub{font-size:12px;color:#9CA3AF}
+
+/* REVIEWS */
+.rev-header{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.rev-score-big{font-size:40px;font-weight:900;color:#111827;line-height:1}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.rev-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.rev-grid{grid-template-columns:1fr}}
+.rev-card{background:#fff;border:1.5px solid #E5E7EB;border-radius:16px;padding:24px}
+.stars{color:#F59E0B;font-size:14px;margin-bottom:12px}
+.rev-text{font-size:14px;color:#374151;line-height:1.7;font-style:italic;margin-bottom:16px}
+.rev-author{font-size:14px;font-weight:700;color:#111827}
+.rev-loc{font-size:12px;color:#9CA3AF;margin-top:2px}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+.contact-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+.contact-icon{width:42px;height:42px;background:#ECFDF5;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-label{font-size:13px;color:#9CA3AF;margin-bottom:2px}
+.contact-value{font-size:15px;font-weight:600;color:#111827}
+.contact-map{background:#F3F4F6;border-radius:14px;height:200px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px;margin-top:24px;border:1px dashed #D1D5DB}
+.form-panel{background:#F9FAFB;border-radius:20px;padding:36px;border:1.5px solid #E5E7EB}
+.form-panel h3{font-size:20px;font-weight:700;color:#111827;margin-bottom:6px}
+.form-panel p{font-size:13px;color:#6B7280;margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.field-label{font-size:11px;font-weight:600;color:#374151;display:block;margin-bottom:4px}
+.form-field{margin-bottom:10px}
+
+/* BUTTONS */
+.btn-primary{background:#1D9E75;color:#fff;border:none;border-radius:9px;padding:12px 22px;font-size:13px;font-weight:700;transition:all .15s}
+.btn-primary:hover{background:#0F6E56}
+.btn-neutral{background:#F9FAFB;color:#374151;border:1.5px solid #E5E7EB;border-radius:9px;padding:12px 22px;font-size:13px;font-weight:600}
+.btn-neutral:hover{background:#F3F4F6}
+.btn-full{width:100%;padding:13px;font-size:14px}
+
+/* OFFER */
+.offer-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.otab{background:#F9FAFB;border:1.5px solid #E5E7EB;border-radius:20px;padding:8px 18px;font-size:13px;font-weight:600;color:#374151;transition:all .2s}
+.otab.active{background:#064E3B;color:#fff;border-color:#064E3B}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.prod-card{border:1.5px solid #E5E7EB;border-radius:16px;overflow:hidden;background:#fff;transition:all .2s}
+.prod-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+.prod-img{height:180px;overflow:hidden;background:#F3F4F6}
+.prod-body{padding:18px}
+.prod-brand{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#9CA3AF;margin-bottom:4px}
+.prod-name{font-size:15px;font-weight:700;color:#111827;margin-bottom:10px}
+.prod-badges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px}
+.bg{background:#D1FAE5;color:#065F46}
+.bb{background:#EFF6FF;color:#1E40AF}
+.bk{background:#F3F4F6;color:#374151}
+.prod-desc{font-size:12px;color:#6B7280;line-height:1.6;margin-bottom:12px;display:none}
+.prod-desc.open{display:block}
+.toggle-btn{background:none;border:none;font-size:11px;color:#1D9E75;font-weight:700;padding:0 0 10px}
+.add-btn{width:100%;padding:10px;border-radius:8px;font-weight:700;font-size:13px;background:#1D9E75;color:#fff;border:1.5px solid #0F6E56;transition:all .2s}
+.add-btn.added{background:#ECFDF5;color:#065F46;border-color:#6EE7B7}
+
+/* INQUIRY */
+.step-bar{display:flex;border:1.5px solid #E5E7EB;border-radius:12px;overflow:hidden;margin-bottom:28px}
+.si{flex:1;text-align:center;padding:10px 4px;font-size:11px;font-weight:700;background:#F9FAFB;color:#9CA3AF;border-right:1px solid #E5E7EB}
+.si:last-child{border-right:none}
+.si.active{background:#064E3B;color:#fff}
+.si.done{background:#ECFDF5;color:#065F46}
+.inq-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F9FAFB;border:1.5px solid #E5E7EB;border-radius:12px;margin-bottom:10px}
+.inq-name{font-size:13px;font-weight:700;color:#111827}
+.inq-cat{font-size:10px;color:#9CA3AF;margin-top:2px}
+.rm-btn{background:none;border:1.5px solid #FCA5A5;border-radius:8px;color:#DC2626;font-size:11px;font-weight:600;padding:5px 12px;flex-shrink:0}
+.param-block{margin-bottom:18px;padding:18px;border:1.5px solid #E5E7EB;border-radius:14px;background:#fff}
+.param-block-title{font-size:13px;font-weight:700;color:#111827;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #F3F4F6}
+.param-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.param-lbl{font-size:11px;font-weight:600;color:#6B7280;width:100px;flex-shrink:0}
+.matrix-wrap{overflow-x:auto;margin-bottom:20px}
+.matrix{width:100%;border-collapse:collapse;min-width:320px}
+.matrix th,.matrix td{border:1px solid #E5E7EB;padding:9px 12px;font-size:12px}
+.matrix th{background:#F9FAFB;font-weight:700;color:#374151}
+.matrix .plbl{font-weight:700;color:#6B7280;background:#FAFAFA;width:90px}
+.summary-box{background:#F9FAFB;border-radius:12px;border:1.5px solid #E5E7EB;padding:16px 18px;margin-bottom:16px}
+.summary-t{font-size:12px;font-weight:700;color:#374151;margin-bottom:9px}
+.summary-r{font-size:11px;color:#6B7280;margin-bottom:4px}
+.summary-p{font-weight:700;color:#111827}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:10px}
+.errors{background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:12px;color:#DC2626;line-height:1.8}
+.empty{padding:56px 24px;text-align:center;color:#9CA3AF;font-size:14px;background:#F9FAFB;border-radius:16px;border:1.5px dashed #D1D5DB}
+.success-box{text-align:center;padding:56px 24px}
+.success-icon{width:72px;height:72px;border-radius:50%;background:#ECFDF5;border:3px solid #6EE7B7;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 18px}
+
+/* [własna zmiana #1] FOOTER 3-kolumnowy */
+footer{background:#064E3B;color:#A7F3D0;padding:48px 0}
+.footer-inner{max-width:1180px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px}
+@media(max-width:760px){.footer-inner{grid-template-columns:1fr;gap:24px}}
+@media(max-width:900px){.footer-inner{padding:0 20px}}
+.footer-logo{font-size:20px;font-weight:900;letter-spacing:.1em;color:#fff;margin-bottom:10px}
+.footer-sub{font-size:13px;line-height:1.7;color:rgba(167,243,208,.7)}
+.footer-h{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(167,243,208,.5);margin-bottom:14px}
+.footer-link{display:block;font-size:13px;color:rgba(167,243,208,.8);margin-bottom:8px;cursor:pointer}
+.footer-link:hover{color:#fff}
+.footer-bottom{max-width:1180px;margin:36px auto 0;padding:20px 40px 0;border-top:1px solid rgba(167,243,208,.15);display:flex;justify-content:space-between;font-size:12px;color:rgba(167,243,208,.4)}
+@media(max-width:900px){.footer-bottom{padding:20px 20px 0}}
+@media(max-width:500px){.footer-bottom{flex-direction:column;gap:6px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="logo">TEURGIUM</span>
+    <button class="nav-link active" onclick="go('home')">Strona główna</button>
+    <button class="nav-link" onclick="go('offer')">Oferta</button>
+    <button class="nav-link" onclick="go('gallery')">Galeria</button>
+    <button class="nav-cta" onclick="go('inquiry')">Zapytanie <span class="rfq-badge" id="rfqBadge" style="display:none">0</span></button>
+  </div>
+</nav>
+
+<div id="pageHome">
+<div class="hero">
+  <img src="./images/img_01.jpg" alt="Teurgium — tarasy i nawierzchnie premium">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <span class="hero-badge">✦ Ceramika premium · Doradztwo · Dostawa</span>
+      <h1>Płyty tarasowe<br>i nawierzchniowe<br>z dostawą pod inwestycję</h1>
+      <p>Tarasy, podjazdy, schody. Ceramika 2 cm i 4 cm od Marazzi, Opoczno, Sintesi. Doradzimy, dobierzemy, dostarczymy.</p>
+      <div class="hero-btns">
+        <button class="btn-white" onclick="go('offer')">Zobacz ofertę</button>
+        <button class="btn-ghost" onclick="go('inquiry')">Wyślij zapytanie →</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">↓</div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Oferta</div>
+    <h2 class="section-h">Co znajdziesz w ofercie</h2>
+    <p class="section-sub">Pełny asortyment nawierzchni zewnętrznych — od ceramiki premium po beton architektoniczny</p>
+    <div class="cat-grid">
+      <button class="cat-card" onclick="goOffer('plyta-2cm')"><div class="cat-img"><img src="./images/img_02.jpg" alt="Płyty 2cm"></div><div class="cat-body"><div class="cat-name">Płyty tarasowe 2 cm</div><div class="cat-sub">Marazzi · Opoczno · Zoya · Sintesi Italy — ceramika premium klasy outdoor</div><div class="cat-arrow">Przeglądaj ofertę →</div></div></button>
+      <button class="cat-card" onclick="goOffer('plyta-4cm')"><div class="cat-img"><img src="./images/img_03.jpg" alt="Płyty 4cm"></div><div class="cat-body"><div class="cat-name">Płyty 4 cm</div><div class="cat-sub">Grube płyty do podjazdów, placów i nawierzchni obciążonych ruchem kołowym</div><div class="cat-arrow">Przeglądaj ofertę →</div></div></button>
+      <button class="cat-card" onclick="goOffer('wsporniki')"><div class="cat-no-img">⚙️</div><div class="cat-body"><div class="cat-name">Wsporniki tarasowe</div><div class="cat-sub">Regulowane systemy podpór do tarasów wentylowanych — różne wysokości i nośności</div><div class="cat-arrow">Przeglądaj ofertę →</div></div></button>
+      <button class="cat-card" onclick="goOffer('kostka')"><div class="cat-img"><img src="./images/img_04.jpg" alt="Kostka betonowa"></div><div class="cat-body"><div class="cat-name">Kostka i płyty betonowe</div><div class="cat-sub">Bruk-Bet, Settline — szeroki wybór kolorów, faktur i formatów</div><div class="cat-arrow">Przeglądaj ofertę →</div></div></button>
+      <button class="cat-card" onclick="goOffer('kruszywa')"><div class="cat-no-img">🪨</div><div class="cat-body"><div class="cat-name">Kruszywa dekoracyjne</div><div class="cat-sub">Żwir, granulat, kamień ozdobny — idealne do ogrodów i przestrzeni zielonych</div><div class="cat-arrow">Przeglądaj ofertę →</div></div></button>
+    </div>
+  </div>
+</section>
+
+<section class="section gray">
+  <div class="wrap">
+    <div class="section-label">Dlaczego Teurgium</div>
+    <h2 class="section-h">Argumenty bez marketingowego szumu</h2>
+    <p class="section-sub">Pracujemy z klientami indywidualnymi, architektami i wykonawcami od ponad dekady</p>
+    <div class="usp-grid">
+      <div class="usp-card"><div class="usp-icon-wrap">🎯</div><div class="usp-title">Doradztwo techniczne</div><div class="usp-desc">Dobieramy produkt do konkretnego projektu, podłoża i obciążenia. Zawsze podajemy co najmniej dwie alternatywy cenowe.</div></div>
+      <div class="usp-card"><div class="usp-icon-wrap">🏭</div><div class="usp-title">Własny magazyn</div><div class="usp-desc">Towar dostępny od ręki — nie na zamówienie. Ponad 200 palet na stanie. Sprawdź dostępność w ciągu 5 minut.</div></div>
+      <div class="usp-card"><div class="usp-icon-wrap">🚚</div><div class="usp-title">Dostawa na plac budowy</div><div class="usp-desc">Wrocław i Dolny Śląsk — dostawa w 24–48h. Pojazd z HDS, rozładunek w miejscu wskazanym przez klienta.</div></div>
+      <div class="usp-card"><div class="usp-icon-wrap">⭐</div><div class="usp-title">Marki premium</div><div class="usp-desc">Marazzi, Sintesi Italy, Opoczno, Zoya, Bruk-Bet. Wyłącznie sprawdzeni producenci z certyfikatami antypoślizgu.</div></div>
+      <div class="usp-card"><div class="usp-icon-wrap">📐</div><div class="usp-title">Pomoc w obliczeniach</div><div class="usp-desc">Prześlij rzut terenu — wyliczymy ilość materiału, zaproponujemy układ i przygotujemy wycenę. Bez kosztów.</div></div>
+      <div class="usp-card"><div class="usp-icon-wrap">🛡️</div><div class="usp-title">Gwarancja i serwis</div><div class="usp-desc">Pełna gwarancja producenta. W razie reklamacji — obsługujemy bezpośrednio, bez przerzucania między działami.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Realizacje</div>
+    <h2 class="section-h">Nasze projekty mówią za siebie</h2>
+    <p class="section-sub">Wybrane realizacje z obszaru Dolnego Śląska i całej Polski</p>
+    <div class="gal-filter">
+      <button class="gtab active" onclick="filterGal('all',this)">Wszystkie</button>
+      <button class="gtab" onclick="filterGal('tarasy',this)">Tarasy</button>
+      <button class="gtab" onclick="filterGal('podjazdy',this)">Podjazdy</button>
+      <button class="gtab" onclick="filterGal('schody',this)">Schody</button>
+      <button class="gtab" onclick="filterGal('ogrod',this)">Ogród</button>
+    </div>
+    <div class="gal-irregular" id="galGrid"></div>
+  </div>
+</section>
+
+<section class="section gray" style="padding:56px 0">
+  <div class="wrap">
+    <div class="section-label">Aktualne okazje</div>
+    <div class="promo-wrap">
+      <div class="promo-slide active" style="background:#FEF3C7"><div style="flex:1"><span class="promo-badge" style="background:#FDE68A;color:#854F0B">Promocja tygodnia</span><div class="promo-title">Opoczno Stone Mood −15%</div><div class="promo-sub">Do 30 czerwca 2026 · Dotyczy wybranych formatów</div></div><button class="btn-primary" onclick="go('offer')">Zobacz produkt →</button></div>
+      <div class="promo-slide" style="background:#F0FDF4"><div style="flex:1"><span class="promo-badge" style="background:#BBF7D0;color:#14532D">Outlet magazynowy</span><div class="promo-title">Zoya Terrazzo — ostatnie sztuki</div><div class="promo-sub">Ograniczona ilość · Ceny negocjowane</div></div><button class="btn-primary" onclick="go('inquiry')">Zapytaj o cenę →</button></div>
+      <div class="promo-slide" style="background:#EFF6FF"><div style="flex:1"><span class="promo-badge" style="background:#BFDBFE;color:#1E3A8A">Pakiet</span><div class="promo-title">Wsporniki tarasowe GRATIS</div><div class="promo-sub">Przy zakupie min. 30 m² ceramiki 2 cm</div></div><button class="btn-primary" onclick="go('inquiry')">Sprawdź warunki →</button></div>
+    </div>
+    <div class="promo-dots"><button class="promo-dot active" onclick="showPromo(0)"></button><button class="promo-dot" onclick="showPromo(1)"></button><button class="promo-dot" onclick="showPromo(2)"></button></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Jak zamówić</div>
+    <h2 class="section-h">Prosty proces — bez zbędnych kroków</h2>
+    <p class="section-sub">Od pierwszego kontaktu do dostawy materiałów na budowę</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div class="step-label">Przeglądaj ofertę</div><div class="step-sub">Ceramika, kostka, kruszywa</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-label">Wyślij zapytanie</div><div class="step-sub">Formularz lub telefon</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-label">Otrzymaj wycenę</div><div class="step-sub">Odpowiedź w 24h</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-label">Dostawa na budowę</div><div class="step-sub">Pod wskazany adres</div></div>
+    </div>
+    <div style="text-align:center"><button class="btn-primary" onclick="go('inquiry')" style="font-size:15px;padding:14px 32px">Wyślij zapytanie ofertowe →</button></div>
+  </div>
+</section>
+
+<section class="section gray">
+  <div class="wrap">
+    <div class="section-label">Opinie Google</div>
+    <div class="rev-header"><div><span style="color:#F59E0B;font-size:22px">★★★★★</span><div class="rev-score-big">4.9</div></div><div><div style="font-size:15px;font-weight:600;color:#111827">Ocena klientów</div><div style="font-size:13px;color:#9CA3AF">47 opinii Google · Średnia 4.9 / 5</div></div></div>
+    <div class="rev-grid">
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="rev-text">"Profesjonalne doradztwo i szybka dostawa. Taras wygląda dokładnie tak jak chcieliśmy."</div><div class="rev-author">Katarzyna W.</div><div class="rev-loc">Wrocław · 2025</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="rev-text">"Dobry kontakt, uczciwa wycena. Dokładnie wytłumaczył różnice między produktami. Polecam."</div><div class="rev-author">Marek Z.</div><div class="rev-loc">Oława · 2025</div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><div class="rev-text">"Doradca, który naprawdę znał produkty. Taras gotowy przed ustalonym terminem."</div><div class="rev-author">Agnieszka K.</div><div class="rev-loc">Świdnica · 2024</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Kontakt</div>
+    <h2 class="section-h">Porozmawiajmy o projekcie</h2>
+    <p class="section-sub">Zadzwoń lub napisz — odpowiadamy w ciągu 2 godzin w dni robocze</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-row"><div class="contact-icon">📞</div><div><div class="contact-label">Telefon</div><div class="contact-value">+48 XXX XXX XXX</div></div></div>
+        <div class="contact-row"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-value">biuro@teurgium.pl</div></div></div>
+        <div class="contact-row"><div class="contact-icon">📍</div><div><div class="contact-label">Obszar działania</div><div class="contact-value">Wrocław i Dolny Śląsk</div></div></div>
+        <div class="contact-row"><div class="contact-icon">⏰</div><div><div class="contact-label">Godziny</div><div class="contact-value">Pn–Pt 8:00–17:00</div></div></div>
+        <div class="contact-map">[ Google Maps embed — zastąpić iframe ]</div>
+      </div>
+      <div class="form-panel">
+        <h3>Szybkie zapytanie</h3>
+        <p>Opisz projekt — odpiszemy z wyceną w ciągu 24h</p>
+        <div class="form-row"><div class="form-field"><label class="field-label">Imię i nazwisko *</label><input type="text" placeholder="Jan Kowalski"></div><div class="form-field"><label class="field-label">Telefon *</label><input type="text" placeholder="+48 600 000 000"></div></div>
+        <div class="form-field"><label class="field-label">Email</label><input type="text" placeholder="jan@email.pl"></div>
+        <div class="form-field"><label class="field-label">Lokalizacja inwestycji</label><input type="text" placeholder="Wrocław, ul. Przykładowa"></div>
+        <div class="form-field"><label class="field-label">Opis projektu</label><textarea placeholder="np. Taras 40m², montaż na wspornikach, termin: wrzesień 2026..." style="height:90px"></textarea></div>
+        <button class="btn-primary btn-full">Wyślij zapytanie →</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div id="pageOffer" style="display:none"><section class="section"><div class="wrap"><div class="section-label">Oferta produktowa</div><h2 class="section-h" style="margin-bottom:24px">Kategorie</h2><div class="offer-tabs" id="offerTabs"><button class="otab active" onclick="filterOffer('plyta-2cm',this)">Płyty 2 cm</button><button class="otab" onclick="filterOffer('plyta-4cm',this)">Płyty 4 cm</button><button class="otab" onclick="filterOffer('wsporniki',this)">Wsporniki</button><button class="otab" onclick="filterOffer('kostka',this)">Kostka beton.</button><button class="otab" onclick="filterOffer('kruszywa',this)">Kruszywa</button></div><div class="prod-grid" id="prodGrid"></div></div></section></div>
+
+<div id="pageGallery" style="display:none"><section class="section"><div class="wrap"><div class="section-label">Galeria realizacji</div><h2 class="section-h" style="margin-bottom:24px">Realizacje</h2><div class="gal-filter"><button class="gtab active" onclick="filterGalPage('all',this)">Wszystkie</button><button class="gtab" onclick="filterGalPage('tarasy',this)">Tarasy</button><button class="gtab" onclick="filterGalPage('podjazdy',this)">Podjazdy</button><button class="gtab" onclick="filterGalPage('schody',this)">Schody</button><button class="gtab" onclick="filterGalPage('ogrod',this)">Ogród</button></div><div class="gal-irregular" id="galGridPage"></div></div></section></div>
+
+<div id="pageInquiry" style="display:none"><section class="section"><div class="wrap" style="max-width:800px"><div class="section-label">System zapytań RFQ</div><h2 class="section-h" style="margin-bottom:28px">Twoje zapytanie ofertowe</h2><div id="inqContent"></div></div></section></div>
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-logo">TEURGIUM</div><div class="footer-sub">Płyty tarasowe i nawierzchniowe premium. Doradztwo, sprzedaż, dostawa na cały Dolny Śląsk.</div></div>
+    <div><div class="footer-h">Oferta</div><span class="footer-link" onclick="goOffer('plyta-2cm')">Płyty tarasowe 2 cm</span><span class="footer-link" onclick="goOffer('plyta-4cm')">Płyty 4 cm</span><span class="footer-link" onclick="goOffer('wsporniki')">Wsporniki tarasowe</span><span class="footer-link" onclick="goOffer('kostka')">Kostka betonowa</span><span class="footer-link" onclick="goOffer('kruszywa')">Kruszywa dekoracyjne</span></div>
+    <div><div class="footer-h">Kontakt</div><span class="footer-link">+48 XXX XXX XXX</span><span class="footer-link">biuro@teurgium.pl</span><span class="footer-link">Pn–Pt 8:00–17:00</span><div style="margin-top:16px"><button class="btn-primary" onclick="go('inquiry')">Wyślij zapytanie →</button></div></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Teurgium. Wszelkie prawa zastrzeżone.</span><span>Wrocław · Dolny Śląsk</span></div>
+</footer>
+
+<script>
+const IMGS={hero:"./images/img_01.jpg",taras1:"./images/img_07.jpg",taras2:"./images/img_08.jpg",taras3:"./images/img_09.jpg",taras4:"./images/img_10.jpg",taras5:"./images/img_06.jpg",podjazd1:"./images/img_11.jpg",podjazd2:"./images/img_12.jpg",podjazd3:"./images/img_05.jpg",nawierzchnia1:"./images/img_14.jpg",realizacja1:"./images/img_15.jpg",realizacja2:"./images/img_16.jpg"};
+const PRODUCTS=[
+  {id:"p1",catId:"plyta-2cm",brand:"Marazzi",name:"Mystone Ardesia 60×60",full:"Marazzi Mystone Ardesia 60×60",thick:"2 cm",formats:["60×60","30×60"],colors:["Grigio","Beige","Antracite"],tex:["Naturalna","Strukturalna"],slip:"R11",imgKey:"taras4",desc:"Płyta ceramiczna imitująca łupek naturalny. Wysoka odporność na mróz i ścieranie."},
+  {id:"p2",catId:"plyta-2cm",brand:"Opoczno",name:"Stone Mood 80×80",full:"Opoczno Stone Mood 80×80",thick:"2 cm",formats:["80×80","40×80"],colors:["Bianco","Nero","Beige"],tex:["Satynowana","Polerowana"],slip:"R10",imgKey:"taras1",desc:"Duży format o minimalistycznym charakterze. Powierzchnia satynowana podkreśla premium charakter."},
+  {id:"p3",catId:"plyta-2cm",brand:"Sintesi Italy",name:"Outdoor Collection 60×120",full:"Sintesi Italy Outdoor 60×120",thick:"2 cm",formats:["60×120","60×60"],colors:["Grigio Scuro","Beige Sand","Ivory"],tex:["Naturalna"],slip:"R11",imgKey:"taras2",desc:"Włoska ceramika outdoorowa. Efekt betonu architektonicznego z pełną odpornością zewnętrzną."},
+  {id:"p4",catId:"kostka",brand:"Bruk-Bet",name:"Granit 40×40×6",full:"Bruk-Bet Granit 40×40×6",thick:"6 cm",formats:["40×40"],colors:["Szary","Grafitowy","Antracyt","Beż"],tex:["Łupana","Piaskowana"],slip:"R12",imgKey:"podjazd2",desc:"Trwała betonowa płyta imitująca granit. Idealna do podjazdów i ciężko obciążonych nawierzchni."},
+];
+const GALLERY_DATA=[
+  {id:"g1",cat:"tarasy",title:"Taras wentylowany na wspornikach",loc:"Wrocław",area:"45 m²",mat:"Marazzi Mystone Ardesia · 2cm",year:2025,imgKey:"taras4"},
+  {id:"g2",cat:"tarasy",title:"Taras przy basenie infinity",loc:"Oława",area:"60 m²",mat:"Sintesi Italy Outdoor 60×120",year:2025,imgKey:"taras2"},
+  {id:"g3",cat:"tarasy",title:"Taras morski z firepit",loc:"Trójmiasto",area:"80 m²",mat:"Opoczno Stone Mood 80×80",year:2024,imgKey:"taras1"},
+  {id:"g4",cat:"tarasy",title:"Taras widokowy górski",loc:"Świdnica",area:"55 m²",mat:"Zoya Terrazzo 2cm",year:2025,imgKey:"taras3"},
+  {id:"g5",cat:"podjazdy",title:"Podjazd nocny z iluminacją LED",loc:"Wrocław",area:"90 m²",mat:"Bruk-Bet Granit 40×40",year:2025,imgKey:"podjazd1"},
+  {id:"g6",cat:"podjazdy",title:"Podjazd z fontanną dekoracyjną",loc:"Jelcz-Laskowice",area:"70 m²",mat:"Gres techniczny 2cm",year:2024,imgKey:"podjazd3"},
+  {id:"g7",cat:"schody",title:"Villa Nova — projekt kompleksowy",loc:"Gdynia",area:"120 m²",mat:"Beton architektoniczny + Gres",year:2025,imgKey:"realizacja1"},
+  {id:"g8",cat:"ogrod",title:"Dom przy Strumieniu — ogród",loc:"Kraków",area:"200 m²",mat:"Spiek kwarcowy + aluminium",year:2025,imgKey:"realizacja2"},
+];
+const PARAMS=[{key:"color",label:"Kolor",type:"select",ok:"colors"},{key:"texture",label:"Faktura",type:"select",ok:"tex"},{key:"format",label:"Format",type:"select",ok:"formats"},{key:"quantity",label:"Ilość (m²)",type:"number",ph:"np. 40"},{key:"delivery",label:"Termin",type:"text",ph:"sierpień 2026"}];
+const GC=["gi1","gi2","gi3","gi4","gi5","gi6"];
+let rfq=[],rfqStep=0,client={name:"",phone:"",email:"",location:"",desc:""},promoIdx=0,promoTimer=null,currentOfferCat="plyta-2cm";
+
+function go(p){["pageHome","pageOffer","pageGallery","pageInquiry"].forEach(id=>document.getElementById(id).style.display="none");document.querySelectorAll(".nav-link").forEach(b=>b.classList.remove("active"));document.getElementById("page"+p.charAt(0).toUpperCase()+p.slice(1)).style.display="";if(p==="home")document.querySelectorAll(".nav-link")[0].classList.add("active");if(p==="offer"){document.querySelectorAll(".nav-link")[1].classList.add("active");renderOffer(currentOfferCat);}if(p==="gallery"){document.querySelectorAll(".nav-link")[2].classList.add("active");renderGalPage("all");}if(p==="inquiry")renderInquiry();window.scrollTo({top:0,behavior:"smooth"});updateBadge();}
+function goOffer(c){currentOfferCat=c;go("offer");}
+function updateBadge(){const b=document.getElementById("rfqBadge");b.style.display=rfq.length>0?"inline-flex":"none";b.textContent=rfq.length;}
+function showPromo(i){promoIdx=i;document.querySelectorAll(".promo-slide").forEach((s,j)=>s.classList.toggle("active",j===i));document.querySelectorAll(".promo-dot").forEach((d,j)=>d.classList.toggle("active",j===i));}
+function startPromo(){clearInterval(promoTimer);promoTimer=setInterval(()=>showPromo((promoIdx+1)%3),4500);}
+startPromo();
+function buildGalHTML(list){return list.map((g,i)=>{const c=GC[i%GC.length];return`<div class="gal-card ${c}" onclick="go('inquiry')"><div class="gal-img"><img src="${IMGS[g.imgKey]||''}" alt="${g.title}" loading="lazy"></div><div class="gal-overlay"></div><div class="gal-info"><div class="gal-cat">${g.cat}</div><div class="gal-title">${g.title}</div><div class="gal-meta">${g.loc} · ${g.area} · ${g.year}</div></div><button class="gal-cta-btn">Zapytaj →</button></div>`;}).join("");}
+function filterGal(c,btn){document.querySelectorAll(".gal-filter .gtab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("galGrid").innerHTML=buildGalHTML(c==="all"?GALLERY_DATA:GALLERY_DATA.filter(g=>g.cat===c));}
+function filterGalPage(c,btn){document.querySelectorAll("#pageGallery .gtab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("galGridPage").innerHTML=buildGalHTML(c==="all"?GALLERY_DATA:GALLERY_DATA.filter(g=>g.cat===c));}
+function renderGalPage(){document.getElementById("galGridPage").innerHTML=buildGalHTML(GALLERY_DATA);}
+function filterOffer(c,btn){currentOfferCat=c;document.querySelectorAll("#offerTabs .otab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderOffer(c);}
+function renderOffer(c){const g=document.getElementById("prodGrid"),f=PRODUCTS.filter(p=>p.catId===c);if(!f.length){g.innerHTML='<div class="empty">Produkty tej kategorii zostaną wkrótce dodane.</div>';return;}g.innerHTML=f.map(p=>{const a=rfq.some(r=>r.productId===p.id);return`<div class="prod-card"><div class="prod-img"><img src="${IMGS[p.imgKey]||''}" alt="${p.name}" loading="lazy"></div><div class="prod-body"><div class="prod-brand">${p.brand}</div><div class="prod-name">${p.name}</div><div class="prod-badges"><span class="badge bg">${p.thick}</span><span class="badge bb">${p.slip}</span><span class="badge bk">Na stanie</span></div><div class="prod-desc" id="desc_${p.id}">${p.desc}<br><br><small>Formaty: ${p.formats.join(", ")}<br>Kolory: ${p.colors.join(", ")}</small></div><button class="toggle-btn" onclick="toggleDesc('${p.id}',this)">Szczegóły ▼</button><button class="add-btn ${a?'added':''}" id="ab_${p.id}" onclick="handleAdd('${p.id}')">${a?"✓ W zapytaniu":"+ Dodaj do zapytania"}</button></div></div>`;}).join("");}
+function toggleDesc(id,btn){const d=document.getElementById("desc_"+id);d.classList.toggle("open");btn.textContent=d.classList.contains("open")?"Zwiń ▲":"Szczegóły ▼";}
+function handleAdd(id){const p=PRODUCTS.find(x=>x.id===id);if(!p||rfq.some(r=>r.productId===id))return;rfq.push({productId:p.id,productName:p.full,catId:p.catId,params:{color:"",texture:"",format:p.formats[0],quantity:"",delivery:""},_m:{colors:p.colors,tex:p.tex,formats:p.formats}});const b=document.getElementById("ab_"+id);if(b){b.textContent="✓ W zapytaniu";b.classList.add("added");}updateBadge();}
+function renderInquiry(){const el=document.getElementById("inqContent");const bar=`<div class="step-bar">${["Produkty","Parametry","Macierz","Dane","Gotowe"].map((s,i)=>`<div class="si${i===rfqStep?" active":i<rfqStep?" done":""}">${s}</div>`).join("")}</div>`;if(rfqStep===0){if(!rfq.length){el.innerHTML=bar+`<div class="empty">Brak produktów.<br><br><button class="btn-primary" onclick="go('offer')" style="margin-top:12px">Przejdź do oferty →</button></div>`;return;}el.innerHTML=bar+rfq.map(it=>`<div class="inq-item"><div style="flex:1"><div class="inq-name">${it.productName}</div><div class="inq-cat">${it.catId}</div></div><button class="rm-btn" onclick="removeRfq('${it.productId}')">Usuń</button></div>`).join("")+`<div class="nav-row"><span></span><button class="btn-primary" onclick="rfqStep=1;renderInquiry()">Dalej: parametry →</button></div>`;}else if(rfqStep===1){el.innerHTML=bar+rfq.map(it=>`<div class="param-block"><div class="param-block-title">${it.productName}</div>${PARAMS.map(pm=>`<div class="param-row"><label class="param-lbl">${pm.label}</label>${pm.type==="select"?`<select onchange="setParam('${it.productId}','${pm.key}',this.value)" style="flex:1"><option value="">Wybierz...</option>${(it._m[pm.ok]||[]).map(o=>`<option${it.params[pm.key]===o?" selected":""}>${o}</option>`).join("")}</select>`:`<input type="${pm.type}" value="${it.params[pm.key]||""}" placeholder="${pm.ph||""}" onchange="setParam('${it.productId}','${pm.key}',this.value)" style="flex:1">`}</div>`).join("")}</div>`).join("")+`<div class="nav-row"><button class="btn-neutral" onclick="rfqStep=0;renderInquiry()">← Wróć</button><button class="btn-primary" onclick="rfqStep=2;renderInquiry()">Dalej: macierz →</button></div>`;}else if(rfqStep===2){const th=`<tr><th class="plbl">Parametr</th>${rfq.map(it=>`<th>${it.productName}<br><button onclick="removeRfq('${it.productId}');rfqStep=2;renderInquiry()" style="font-size:10px;color:#DC2626;background:none;border:none;cursor:pointer">✕ usuń</button></th>`).join("")}</tr>`;const tb=PARAMS.map(pm=>`<tr><td class="plbl">${pm.label}</td>${rfq.map(it=>`<td style="text-align:center;color:${it.params[pm.key]?"#111827":"#D1D5DB"}">${it.params[pm.key]||"—"}</td>`).join("")}</tr>`).join("");el.innerHTML=bar+`<div class="matrix-wrap"><table class="matrix"><thead>${th}</thead><tbody>${tb}</tbody></table></div><div class="nav-row"><button class="btn-neutral" onclick="rfqStep=1;renderInquiry()">← Edytuj parametry</button><button class="btn-primary" onclick="rfqStep=3;renderInquiry()">Dalej: dane →</button></div>`;}else if(rfqStep===3){el.innerHTML=bar+`<div class="form-row">${[["name","Imię i nazwisko *","Jan Kowalski"],["phone","Telefon *","+48 600 000 000"],["email","Email","jan@email.pl"],["location","Lokalizacja","Wrocław"]].map(([k,l,ph])=>`<div class="form-field"><label class="field-label">${l}</label><input type="text" value="${client[k]||""}" placeholder="${ph}" onchange="client['${k}']=this.value"></div>`).join("")}</div><div class="form-field"><label class="field-label">Opis projektu</label><textarea placeholder="np. Taras 40m²..." style="height:80px" onchange="client.desc=this.value">${client.desc||""}</textarea></div><div class="summary-box"><div class="summary-t">Podsumowanie — ${rfq.length} produkt${rfq.length===1?"":"y"}</div>${rfq.map(it=>`<div class="summary-r"><span class="summary-p">${it.productName}</span> — ${PARAMS.map(p=>it.params[p.key]?p.label+": "+it.params[p.key]:null).filter(Boolean).join(" · ")||"brak parametrów"}</div>`).join("")}</div><div id="rfqErr"></div><div class="nav-row"><button class="btn-neutral" onclick="rfqStep=2;renderInquiry()">← Wróć</button><button class="btn-primary" id="subBtn" onclick="handleSubmit()" style="font-size:14px;padding:12px 28px">Wyślij zapytanie →</button></div>`;}else{el.innerHTML=bar+`<div class="success-box"><div class="success-icon">✓</div><h2 style="font-size:24px;font-weight:800;margin-bottom:10px">Zapytanie wysłane!</h2><p style="font-size:15px;color:#6B7280;max-width:400px;margin:0 auto 28px;line-height:1.7">Odpowiemy w ciągu 24 godzin roboczych.</p><button class="btn-neutral" onclick="rfq=[];rfqStep=0;client={name:'',phone:'',email:'',location:'',desc:''};renderInquiry();updateBadge()">← Nowe zapytanie</button></div>`;}}
+function setParam(id,k,v){const it=rfq.find(x=>x.productId===id);if(it)it.params[k]=v;}
+function removeRfq(id){rfq=rfq.filter(x=>x.productId!==id);updateBadge();renderInquiry();const b=document.getElementById("ab_"+id);if(b){b.textContent="+ Dodaj do zapytania";b.classList.remove("added");}}
+async function handleSubmit(){const e=[];if(!client.name.trim())e.push("Podaj imię i nazwisko.");if(!client.phone.trim()&&!client.email.trim())e.push("Podaj telefon lub email.");if(client.email&&!client.email.includes("@"))e.push("Nieprawidłowy email.");const ed=document.getElementById("rfqErr");if(e.length){ed.innerHTML=`<div class="errors">${e.map(x=>"• "+x).join("<br>")}</div>`;return;}ed.innerHTML="";const btn=document.getElementById("subBtn");btn.disabled=true;btn.textContent="Wysyłam...";await new Promise(r=>setTimeout(r,1200));rfqStep=4;renderInquiry();}
+
+document.getElementById("galGrid").innerHTML=buildGalHTML(GALLERY_DATA);
+renderOffer("plyta-2cm");
+</script>
+</body>
+</html>
